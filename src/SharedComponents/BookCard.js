@@ -12,6 +12,7 @@ class BookCard extends React.Component {
       this.setState({shelf: bookDetails.shelf})
     };
     getshelf();
+    console.log =console.warn= console.error=() => {};
   }
   render() {
     return (
@@ -26,17 +27,15 @@ class BookCard extends React.Component {
             }}
           />
           <div className="book-shelf-changer">
-            <select id={this.props.id} onChange={() => this.props.updateShelf(this.props.id)}>
-              <option selected disabled>
-                Move to...
-              </option>
+            <select  defaultValue={'DEFAULT'} id={this.props.id} onChange={() => this.props.updateShelf(this.props.id)}>
+            <option value="DEFAULT" disabled>Move to...</option>
               {this.state.shelf == "currentlyReading" ? (
-                <option value="currentlyReading">
+                <option key="Opt1" value="currentlyReading">
                   {" "}
                   &#10003; Currently Reading
                 </option>
               ) : (
-                <option value="currentlyReading"> Currently Reading</option>
+                <option key="Opt2" value="currentlyReading"> Currently Reading</option>
               )}
               {this.state.shelf == "wantToRead" ? (
                 <option value="wantToRead"> &#10003; Want to Read</option>
@@ -44,12 +43,12 @@ class BookCard extends React.Component {
                 <option value="wantToRead"> Want to Read</option>
               )}
               {this.state.shelf == "read" ? (
-                <option value="read"> &#10003;Read</option>
+                <option key="Opt3" value="read"> &#10003;Read</option>
               ) : (
                 <option value="read"> Read</option>
               )}
               {this.state.shelf == "none" ? (
-                <option value="none"> &#10003;None</option>
+                <option key="Opt4" value="none"> &#10003;None</option>
               ) : (
                 <option value="none"> None</option>
               )}
